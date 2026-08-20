@@ -6,63 +6,105 @@
     <title>Colmena Inteligente - Tecnología Aplicada a la Apicultura</title>
     <style>
         :root {
-            --primary: #f59e0b;
-            --primary-dark: #d97706;
-            --bg: #fffbe3;
-            --text: #1f2937;
+            --amber-primary: #f59e0b;
+            --amber-dark: #b45309;
+            --amber-light: #fef3c7;
+            --bg-honey: #fffbe3;
             --card-bg: #ffffff;
+            --text-dark: #374151;
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--text);
-            background-color: var(--bg);
+            color: var(--text-dark);
+            background-color: var(--bg-honey);
+            background-image: radial-gradient(#fde68a 1px, transparent 1px);
+            background-size: 24px 24px;
             margin: 0;
             padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border-radius: 16px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            padding: 35px 20px;
+            background: linear-gradient(135deg, #fef08a, #fde047);
+            border: 3px dashed var(--amber-primary);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.15);
         }
 
         h1 {
-            color: var(--primary-dark);
-            margin: 0 0 10px 0;
-            font-size: 2.2rem;
+            color: var(--amber-dark);
+            margin: 10px 0;
+            font-size: 2.3rem;
         }
 
         .subtitle {
-            font-weight: 600;
-            color: #b45309;
+            font-weight: 700;
+            color: #d97706;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            font-size: 0.95rem;
         }
 
-        .card {
+        /* Secciones desplegables/interactivas */
+        details {
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 14px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            border: 2px solid #fef08a;
+            overflow: hidden;
+            transition: all 0.2s ease;
         }
 
-        h2 {
-            color: var(--primary-dark);
-            border-bottom: 2px solid #fef3c7;
-            padding-bottom: 8px;
-            margin-top: 0;
+        details[open] {
+            border-color: var(--amber-primary);
+            box-shadow: 0 6px 16px rgba(217, 119, 6, 0.12);
+        }
+
+        summary {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--amber-dark);
+            padding: 18px 22px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fffde7;
+            user-select: none;
+        }
+
+        summary:hover {
+            background-color: #fef08a;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➕";
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: "➖";
+        }
+
+        .content {
+            padding: 20px 25px;
+            border-top: 1px solid #fef3c7;
         }
 
         .led-grid {
@@ -74,7 +116,7 @@
 
         .led-card {
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 10px;
             border-left: 6px solid #ccc;
             background: #fafafa;
         }
@@ -82,6 +124,24 @@
         .led-green { border-color: #22c55e; }
         .led-yellow { border-color: #eab308; }
         .led-red { border-color: #ef4444; }
+
+        /* Contenedores de fotos y videos */
+        .media-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff8e1;
+            border: 2px dashed #f59e0b;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--amber-dark);
+            font-weight: bold;
+        }
+
+        .media-box img, .media-box video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
 
         ul {
             padding-left: 20px;
@@ -91,11 +151,12 @@
             margin-bottom: 8px;
         }
 
-        .footer {
+        footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             font-weight: bold;
-            color: var(--primary-dark);
+            color: var(--amber-dark);
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -104,75 +165,123 @@
 <div class="container">
 
     <header>
-        <span class="subtitle">Tecnología aplicada a la apicultura</span>
+        <span class="subtitle">🌻🌸 Taller y Feria de Ciencias 🌸🌻</span>
         <h1>🐝 COLMENA INTELIGENTE</h1>
+        <p style="margin:0; font-weight:600; color:#92400e;">Tecnología aplicada a la apicultura 🍯</p>
     </header>
 
-    <div class="card">
-        <h2>🍯 ¿Qué es la apicultura?</h2>
-        <p>La apicultura es la actividad dedicada a la crianza y cuidado de las abejas, principalmente para obtener productos como miel, cera, propóleo y polen. Además, cumple un papel fundamental en el ambiente mediante la polinización.</p>
-        <p>Para mantener una colonia saludable es importante controlar diferentes condiciones dentro de la colmena, entre ellas la temperatura y la humedad.</p>
-    </div>
-
-    <div class="card">
-        <h2>🏠 ¿Qué es una colmena?</h2>
-        <p>Es el lugar donde vive y se desarrolla una colonia de abejas. En su interior se encuentran los panales donde almacenan alimento y se desarrolla la cría. Controlar sus condiciones ambientales es una herramienta clave para el apicultor.</p>
-    </div>
-
-    <div class="card">
-        <h2>🤖 Nuestra Colmena Inteligente</h2>
-        <p>Consiste en una maqueta 3D equipada con un sistema electrónico capaz de medir las condiciones ambientales de su interior en tiempo real sin necesidad de abrir constantemente la colmena.</p>
-        
-        <h3>⚙️ ¿Cómo funciona?</h3>
-        <ol>
-            <li><strong>Medición:</strong> El sensor interior mide temperatura y humedad.</li>
-            <li><strong>Procesamiento:</strong> El sistema electrónico procesa la información.</li>
-            <li><strong>Visualización:</strong> Los datos se despliegan en una pantalla LCD.</li>
-            <li><strong>Indicador de estado:</strong> Luces LED indican alertas rápidas de temperatura.</li>
-        </ol>
-
-        <h3>Indicadores LED de Temperatura:</h3>
-        <div class="led-grid">
-            <div class="led-card led-green">
-                <strong>🟢 Ideal</strong><br>
-                Temperatura óptima dentro del rango seguro.
-            </div>
-            <div class="led-card led-yellow">
-                <strong>🟡 35 °C a 37 °C</strong><br>
-                Requiere atención del apicultor.
-            </div>
-            <div class="led-card led-red">
-                <strong>🔴 Más de 37 °C</strong><br>
-                Temperatura elevada, requiere intervención inmediata.
+    <!-- Sección 1 -->
+    <details open>
+        <summary><span>🍯 ¿Qué es la apicultura?</span></summary>
+        <div class="content">
+            <p>La apicultura es la actividad dedicada a la crianza y cuidado de las abejas, principalmente para obtener productos como miel, cera, propóleo y polen. Además de su importancia productiva, cumple un papel fundamental en el ambiente mediante la polinización de plantas y cultivos[cite: 1].</p>
+            <p>Para mantener una colonia saludable es muy importante controlar condiciones internas como la temperatura y la humedad[cite: 1].</p>
+            
+            <div class="media-box">
+                📷 Espacio para foto de las abejas / producción de miel
+                <!-- Reemplaza esta línea cuando tengas tu imagen: <img src="tu_foto.jpg" alt="Apicultura"> -->
             </div>
         </div>
-    </div>
+    </details>
 
-    <div class="card">
-        <h2>🔧 Componentes Principales</h2>
-        <ul>
-            <li>🏠 Maqueta 3D de una colmena.</li>
-            <li>🌡️ Sensor de temperatura y 💧 humedad.</li>
-            <li>📺 Pantalla LCD.</li>
-            <li>🟢🟡🔴 Sistema de luces LED (Verde, Amarillo, Rojo).</li>
-            <li>⚡ Sistema electrónico de control, cables y conexiones.</li>
-        </ul>
-    </div>
+    <!-- Sección 2 -->
+    <details>
+        <summary><span>🏠 ¿Qué es una colmena?</span></summary>
+        <div class="content">
+            <p>Una colmena es el lugar donde vive y se desarrolla una colonia de abejas[cite: 1]. En su interior se encuentran los panales donde almacenan alimento y donde se desarrolla la cría[cite: 1].</p>
+            <p>Las abejas necesitan mantener determinadas condiciones ambientales para que la colonia pueda desarrollarse correctamente[cite: 1].</p>
 
-    <div class="card">
-        <h2>🔮 Posibles Mejoras Futuras</h2>
-        <ul>
-            <li>📱 Envío de datos directamente al teléfono celular.</li>
-            <li>📊 Generación de gráficos e historial de mediciones.</li>
-            <li>☁️ Almacenamiento en la nube para consulta remota.</li>
-            <li>🚨 Alarma sonora/digital ante valores críticos.</li>
-            <li>🔋 Alimentación mediante energía solar.</li>
-        </ul>
-    </div>
+            <div class="media-box">
+                🎥 Espacio para video o foto del interior de la colmena
+                <!-- Reemplaza esta línea cuando tengas tu video: <video controls src="tu_video.mp4"></video> -->
+            </div>
+        </div>
+    </details>
 
-    <div class="footer">
-        🐝 Tecnología + Apicultura = Una producción más inteligente
-    </div>
+    <!-- Sección 3 -->
+    <details>
+        <summary><span>🤖 ¿Qué es nuestra Colmena Inteligente y cómo funciona?</span></summary>
+        <div class="content">
+            <p>Nuestro proyecto consiste en una maqueta 3D de una colmena equipada con un sistema electrónico capaz de medir las condiciones ambientales de su interior en tiempo real[cite: 1].</p>
+            
+            <h3>⚙️ Pasos de funcionamiento:</h3>
+            <ol>
+                <li><strong>Medición:</strong> El sensor ubicado dentro de la colmena mide la temperatura y humedad[cite: 1].</li>
+                <li><strong>Procesamiento:</strong> La información es procesada por el sistema electrónico[cite: 1].</li>
+                <li><strong>Visualización:</strong> Los datos se envían a una pantalla LCD para su lectura[cite: 1].</li>
+                <li><strong>Indicador LED:</strong> Tres luces indican de forma rápida el estado térmico[cite: 1].</li>
+            </ol>
+
+            <h3>RANGOS DE TEMPERATURA:</h3>
+            <div class="led-grid">
+                <div class="led-card led-green">
+                    <strong>🟢 Temperatura Ideal</strong><br>
+                    Rango óptimo para la maqueta[cite: 1].
+                </div>
+                <div class="led-card led-yellow">
+                    <strong>🟡 35 °C a 37 °C</strong><br>
+                    Atención necesaria[cite: 1].
+                </div>
+                <div class="led-card led-red">
+                    <strong>🔴 Más de 37 °C</strong><br>
+                    Temperatura elevada, requiere intervención[cite: 1].
+                </div>
+            </div>
+
+            <div class="media-box">
+                📸 Espacio para fotos/videos de la Maqueta 3D y los Sensores
+            </div>
+        </div>
+    </details>
+
+    <!-- Sección 4 -->
+    <details>
+        <summary><span>🔧 Componentes Principales</span></summary>
+        <div class="content">
+            <ul>
+                <li>🏠 Maqueta 3D de una colmena[cite: 1].</li>
+                <li>🌡️ Sensor de temperatura y 💧 humedad[cite: 1].</li>
+                <li>📺 Pantalla LCD[cite: 1].</li>
+                <li>🟢 Luces LED de señalización (Verde, Amarillo, Rojo)[cite: 1].</li>
+                <li>⚡ Sistema electrónico de control, cables y conexiones[cite: 1].</li>
+            </ul>
+
+            <div class="media-box">
+                📷 Espacio para foto del circuito y conexiones
+            </div>
+        </div>
+    </details>
+
+    <!-- Sección 5 -->
+    <details>
+        <summary><span>🎯 Objetivos e Importancia</span></summary>
+        <div class="content">
+            <ul>
+                <li>Controlar la temperatura y humedad dentro de la colmena[cite: 1].</li>
+                <li>Detectar cambios importantes con luces LED[cite: 1].</li>
+                <li>Comprender cómo aplicar electrónica y programación a la producción agropecuaria[cite: 1].</li>
+                <li>Promover la ganadería y agricultura de precisión[cite: 1].</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Sección 6 -->
+    <details>
+        <summary><span>🔮 Posibles Mejoras Futuras</span></summary>
+        <div class="content">
+            <ul>
+                <li>📱 Enviar datos directamente a un celular[cite: 1].</li>
+                <li>📊 Crear gráficos de temperatura e historial[cite: 1].</li>
+                <li>☁️ Guardar datos en la nube[cite: 1].</li>
+                <li>🚨 Añadir alarmas sonoras[cite: 1].</li>
+                <li>🔋 Alimentación con energía solar[cite: 1].</li>
+            </ul>
+        </div>
+    </details>
+
+    <footer>
+        🐝 Tecnología + Apicultura = Una producción más inteligente 🌻
+    </footer>
 
 </div>
 
