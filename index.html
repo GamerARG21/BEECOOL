@@ -8,31 +8,30 @@
         :root {
             --amber-primary: #f59e0b;
             --amber-dark: #b45309;
-            --amber-light: #fef3c7;
             --bg-honey: #fffbe3;
             --card-bg: #ffffff;
             --text-dark: #374151;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--bg-honey);
-            background-image: radial-gradient(#fde68a 1px, transparent 1px);
+            background-image: radial-gradient(#fde68a 1.2px, transparent 1.2px);
             background-size: 24px 24px;
             margin: 0;
-            padding: 20px;
+            padding: 20px 15px;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            padding: 35px 20px;
+            padding: 30px 20px;
             background: linear-gradient(135deg, #fef08a, #fde047);
             border: 3px dashed var(--amber-primary);
             border-radius: 20px;
@@ -42,8 +41,8 @@
 
         h1 {
             color: var(--amber-dark);
-            margin: 10px 0;
-            font-size: 2.3rem;
+            margin: 10px 0 5px 0;
+            font-size: 2.1rem;
         }
 
         .subtitle {
@@ -51,30 +50,30 @@
             color: #d97706;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
-        /* Secciones desplegables/interactivas */
+        /* Estilos de Botones Desplegables / Interactivos */
         details {
             background: var(--card-bg);
             border-radius: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.06);
             border: 2px solid #fef08a;
             overflow: hidden;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         details[open] {
             border-color: var(--amber-primary);
-            box-shadow: 0 6px 16px rgba(217, 119, 6, 0.12);
+            box-shadow: 0 6px 16px rgba(217, 119, 6, 0.15);
         }
 
         summary {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: var(--amber-dark);
-            padding: 18px 22px;
+            padding: 18px 20px;
             cursor: pointer;
             list-style: none;
             display: flex;
@@ -82,6 +81,7 @@
             align-items: center;
             background-color: #fffde7;
             user-select: none;
+            transition: background-color 0.2s ease;
         }
 
         summary:hover {
@@ -92,30 +92,46 @@
             display: none;
         }
 
+        /* Indicador visual (+ / -) */
         summary::after {
-            content: "➕";
-            font-size: 1.1rem;
-            transition: transform 0.2s ease;
+            content: "👇 Toca para abrir";
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #fef08a;
+            color: #92400e;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #f59e0b;
         }
 
         details[open] summary::after {
-            content: "➖";
+            content: "👆 Clic para cerrar";
+            background: #f59e0b;
+            color: #ffffff;
         }
 
+        /* Contenido Oculto */
         .content {
-            padding: 20px 25px;
-            border-top: 1px solid #fef3c7;
+            padding: 20px 22px;
+            border-top: 1.5px solid #fef3c7;
+            background-color: #ffffff;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .led-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
             margin-top: 15px;
         }
 
         .led-card {
-            padding: 15px;
+            padding: 12px 15px;
             border-radius: 10px;
             border-left: 6px solid #ccc;
             background: #fafafa;
@@ -125,25 +141,19 @@
         .led-yellow { border-color: #eab308; }
         .led-red { border-color: #ef4444; }
 
-        /* Contenedores de fotos y videos */
+        /* Espacios para Fotos y Videos */
         .media-box {
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             background: #fff8e1;
             border: 2px dashed #f59e0b;
             border-radius: 12px;
             text-align: center;
             color: var(--amber-dark);
-            font-weight: bold;
+            font-weight: 600;
         }
 
-        .media-box img, .media-box video {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        ul {
+        ul, ol {
             padding-left: 20px;
         }
 
@@ -153,10 +163,10 @@
 
         footer {
             text-align: center;
-            padding: 25px;
+            padding: 25px 10px;
             font-weight: bold;
             color: var(--amber-dark);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
     </style>
 </head>
@@ -165,116 +175,125 @@
 <div class="container">
 
     <header>
-        <span class="subtitle">🌻🌸 Taller y Feria de Ciencias 🌸🌻</span>
+        <span class="subtitle">🌻🌸 Feria de Ciencias & Tecnología 🌸🌻</span>
         <h1>🐝 COLMENA INTELIGENTE</h1>
         <p style="margin:0; font-weight:600; color:#92400e;">Tecnología aplicada a la apicultura 🍯</p>
     </header>
 
-    <!-- Sección 1 -->
-    <details open>
-        <summary><span>🍯 ¿Qué es la apicultura?</span></summary>
+    <!-- Título 1 -->
+    <details>
+        <summary>🍯 ¿Qué es la apicultura?</summary>
         <div class="content">
-            <p>La apicultura es la actividad dedicada a la crianza y cuidado de las abejas, principalmente para obtener productos como miel, cera, propóleo y polen. Además de su importancia productiva, cumple un papel fundamental en el ambiente mediante la polinización de plantas y cultivos[cite: 1].</p>
-            <p>Para mantener una colonia saludable es muy importante controlar condiciones internas como la temperatura y la humedad[cite: 1].</p>
+            <p>La apicultura es la actividad dedicada a la crianza y cuidado de las abejas, principalmente para obtener productos como miel, cera, propóleo y polen.</p>
+            <p>Además de su importancia productiva, cumple un papel fundamental en el ambiente mediante la polinización de plantas y cultivos.</p>
+            <p>Para mantener una colonia saludable es muy importante controlar condiciones internas como la temperatura y la humedad.</p>
             
             <div class="media-box">
-                📷 Espacio para foto de las abejas / producción de miel
-                <!-- Reemplaza esta línea cuando tengas tu imagen: <img src="tu_foto.jpg" alt="Apicultura"> -->
+                📷 [Espacio reservado para Foto de Apicultura / Miel]
             </div>
         </div>
     </details>
 
-    <!-- Sección 2 -->
+    <!-- Título 2 -->
     <details>
-        <summary><span>🏠 ¿Qué es una colmena?</span></summary>
+        <summary>🏠 ¿Qué es una colmena?</summary>
         <div class="content">
-            <p>Una colmena es el lugar donde vive y se desarrolla una colonia de abejas[cite: 1]. En su interior se encuentran los panales donde almacenan alimento y donde se desarrolla la cría[cite: 1].</p>
-            <p>Las abejas necesitan mantener determinadas condiciones ambientales para que la colonia pueda desarrollarse correctamente[cite: 1].</p>
+            <p>Una colmena es el lugar donde vive y se desarrolla una colonia de abejas. En su interior se encuentran los panales donde almacenan alimento y se desarrolla la cría.</p>
+            <p>Las abejas necesitan mantener determinadas condiciones ambientales para que la colonia pueda desarrollarse correctamente.</p>
 
             <div class="media-box">
-                🎥 Espacio para video o foto del interior de la colmena
-                <!-- Reemplaza esta línea cuando tengas tu video: <video controls src="tu_video.mp4"></video> -->
+                🎥 [Espacio reservado para Video o Foto del interior de la Colmena]
             </div>
         </div>
     </details>
 
-    <!-- Sección 3 -->
+    <!-- Título 3 -->
     <details>
-        <summary><span>🤖 ¿Qué es nuestra Colmena Inteligente y cómo funciona?</span></summary>
+        <summary>🤖 ¿Qué es nuestra Colmena Inteligente?</summary>
         <div class="content">
-            <p>Nuestro proyecto consiste en una maqueta 3D de una colmena equipada con un sistema electrónico capaz de medir las condiciones ambientales de su interior en tiempo real[cite: 1].</p>
-            
-            <h3>⚙️ Pasos de funcionamiento:</h3>
+            <p>Nuestro proyecto consiste en una maqueta 3D de una colmena equipada con un sistema electrónico capaz de medir las condiciones ambientales de su interior en tiempo real.</p>
+            <p>El sistema cuenta con un sensor de temperatura y humedad que muestra la información en una pantalla LCD sin necesidad de abrir la colmena constantemente.</p>
+
+            <div class="media-box">
+                📸 [Espacio reservado para Fotos / Videos de la Maqueta 3D]
+            </div>
+        </div>
+    </details>
+
+    <!-- Título 4 -->
+    <details>
+        <summary>⚙️ ¿Cómo funciona?</summary>
+        <div class="content">
             <ol>
-                <li><strong>Medición:</strong> El sensor ubicado dentro de la colmena mide la temperatura y humedad[cite: 1].</li>
-                <li><strong>Procesamiento:</strong> La información es procesada por el sistema electrónico[cite: 1].</li>
-                <li><strong>Visualización:</strong> Los datos se envían a una pantalla LCD para su lectura[cite: 1].</li>
-                <li><strong>Indicador LED:</strong> Tres luces indican de forma rápida el estado térmico[cite: 1].</li>
+                <li><strong>Medición:</strong> El sensor ubicado dentro de la colmena mide temperatura y humedad.</li>
+                <li><strong>Procesamiento:</strong> La información es procesada por el sistema electrónico.</li>
+                <li><strong>Visualización:</strong> Los datos son enviados a la pantalla LCD.</li>
+                <li><strong>Indicador LED:</strong> Tres luces indican de manera rápida el estado de la temperatura.</li>
             </ol>
 
-            <h3>RANGOS DE TEMPERATURA:</h3>
+            <h3>🚦 Indicadores LED de Temperatura:</h3>
             <div class="led-grid">
                 <div class="led-card led-green">
-                    <strong>🟢 Temperatura Ideal</strong><br>
-                    Rango óptimo para la maqueta[cite: 1].
+                    <strong>🟢 Ideal</strong><br>
+                    Temperatura en rango óptimo.
                 </div>
                 <div class="led-card led-yellow">
                     <strong>🟡 35 °C a 37 °C</strong><br>
-                    Atención necesaria[cite: 1].
+                    Atención necesaria.
                 </div>
                 <div class="led-card led-red">
                     <strong>🔴 Más de 37 °C</strong><br>
-                    Temperatura elevada, requiere intervención[cite: 1].
+                    Temperatura elevada.
                 </div>
             </div>
 
             <div class="media-box">
-                📸 Espacio para fotos/videos de la Maqueta 3D y los Sensores
+                📷 [Espacio reservado para Foto del circuito con los LEDs]
             </div>
         </div>
     </details>
 
-    <!-- Sección 4 -->
+    <!-- Título 5 -->
     <details>
-        <summary><span>🔧 Componentes Principales</span></summary>
+        <summary>🔧 Componentes principales</summary>
         <div class="content">
             <ul>
-                <li>🏠 Maqueta 3D de una colmena[cite: 1].</li>
-                <li>🌡️ Sensor de temperatura y 💧 humedad[cite: 1].</li>
-                <li>📺 Pantalla LCD[cite: 1].</li>
-                <li>🟢 Luces LED de señalización (Verde, Amarillo, Rojo)[cite: 1].</li>
-                <li>⚡ Sistema electrónico de control, cables y conexiones[cite: 1].</li>
+                <li>🏠 Maqueta 3D de una colmena.</li>
+                <li>🌡️ Sensor de temperatura y 💧 humedad.</li>
+                <li>📺 Pantalla LCD.</li>
+                <li>🟢 Luces LED verde, amarilla y roja.</li>
+                <li>⚡ Sistema electrónico de control, cables y conexiones.</li>
             </ul>
 
             <div class="media-box">
-                📷 Espacio para foto del circuito y conexiones
+                📷 [Espacio reservado para Foto de los Componentes]
             </div>
         </div>
     </details>
 
-    <!-- Sección 5 -->
+    <!-- Título 6 -->
     <details>
-        <summary><span>🎯 Objetivos e Importancia</span></summary>
+        <summary>🎯 Objetivos e Importancia del proyecto</summary>
         <div class="content">
             <ul>
-                <li>Controlar la temperatura y humedad dentro de la colmena[cite: 1].</li>
-                <li>Detectar cambios importantes con luces LED[cite: 1].</li>
-                <li>Comprender cómo aplicar electrónica y programación a la producción agropecuaria[cite: 1].</li>
-                <li>Promover la ganadería y agricultura de precisión[cite: 1].</li>
+                <li>Controlar la temperatura y humedad dentro de la colmena.</li>
+                <li>Mostrar la información mediante una pantalla LCD y detectar cambios rápidos con luces LED.</li>
+                <li>Comprender cómo aplicar la electrónica y la programación a la producción agropecuaria (ganadería de precisión).</li>
+                <li>Promover una apicultura más eficiente y basada en el monitoreo.</li>
             </ul>
         </div>
     </details>
 
-    <!-- Sección 6 -->
+    <!-- Título 7 -->
     <details>
-        <summary><span>🔮 Posibles Mejoras Futuras</span></summary>
+        <summary>🔮 Posibles mejoras futuras</summary>
         <div class="content">
             <ul>
-                <li>📱 Enviar datos directamente a un celular[cite: 1].</li>
-                <li>📊 Crear gráficos de temperatura e historial[cite: 1].</li>
-                <li>☁️ Guardar datos en la nube[cite: 1].</li>
-                <li>🚨 Añadir alarmas sonoras[cite: 1].</li>
-                <li>🔋 Alimentación con energía solar[cite: 1].</li>
+                <li>📱 Enviar los datos directamente a un celular.</li>
+                <li>📊 Crear gráficos con el historial de temperatura y humedad.</li>
+                <li>☁️ Guardar datos en la nube para consultarlos desde cualquier lugar.</li>
+                <li>🚨 Incorporar una alarma sonora cuando la temperatura o humedad sean críticas.</li>
+                <li>🔋 Utilizar energía solar para alimentar el sistema.</li>
             </ul>
         </div>
     </details>
